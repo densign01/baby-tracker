@@ -122,6 +122,27 @@ export default function SettingsScreen() {
                     </TouchableOpacity>
                 </View>
 
+                {/* Premium */}
+                <View style={styles.section}>
+                    <Text style={styles.sectionTitle}>Premium</Text>
+                    <TouchableOpacity style={styles.premiumCard} onPress={handleUpgrade}>
+                        <Text style={styles.premiumIcon}>⭐</Text>
+                        <View style={styles.premiumContent}>
+                            <Text style={styles.premiumTitle}>Upgrade to Premium</Text>
+                            <Text style={styles.premiumSubtitle}>Unlock all features</Text>
+                        </View>
+                        <Text style={styles.arrow}>→</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.settingItem} onPress={handleShare}>
+                        <Text style={styles.settingIcon}>👨‍👩‍👧</Text>
+                        <Text style={styles.settingLabel}>Share with Partner</Text>
+                        <View style={styles.premiumBadge}>
+                            <Text style={styles.premiumBadgeText}>PRO</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+
                 {/* Feeding Preferences */}
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Feeding Options</Text>
@@ -154,27 +175,6 @@ export default function SettingsScreen() {
                             />
                         </View>
                     </View>
-                </View>
-
-                {/* Premium */}
-                <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>Premium</Text>
-                    <TouchableOpacity style={styles.premiumCard} onPress={handleUpgrade}>
-                        <Text style={styles.premiumIcon}>⭐</Text>
-                        <View style={styles.premiumContent}>
-                            <Text style={styles.premiumTitle}>Upgrade to Premium</Text>
-                            <Text style={styles.premiumSubtitle}>Unlock all features</Text>
-                        </View>
-                        <Text style={styles.arrow}>→</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.settingItem} onPress={handleShare}>
-                        <Text style={styles.settingIcon}>👨‍👩‍👧</Text>
-                        <Text style={styles.settingLabel}>Share with Partner</Text>
-                        <View style={styles.premiumBadge}>
-                            <Text style={styles.premiumBadgeText}>PRO</Text>
-                        </View>
-                    </TouchableOpacity>
                 </View>
 
                 {/* Account */}

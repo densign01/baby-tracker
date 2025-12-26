@@ -4,7 +4,12 @@
 export const colors = {
     primary: '#7C6FEA',
     primaryLight: '#C4B5FD',
-    primaryDark: '#5D4ED6',
+    primaryDark: '#5B4ED1',
+
+    // Sprout green accent (matches icon)
+    accent: '#4ADE80',
+    accentLight: '#86EFAC',
+    accentDark: '#22C55E',
 
     background: '#F8F9FE',
     backgroundSecondary: '#FFFFFF',
@@ -18,7 +23,7 @@ export const colors = {
     border: '#E2E8F0',
     inputBackground: '#FFFFFF',
 
-    success: '#10B981',
+    success: '#22C55E',
     warning: '#F59E0B',
     error: '#EF4444',
     info: '#3B82F6',
