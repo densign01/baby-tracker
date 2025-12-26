@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "Baby Tracker",
-    "slug": "baby-tracker",
+    "name": "Sprout - Baby Tracker",
+    "slug": "sprout-baby-tracker",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
-    "scheme": "babytracker",
+    "scheme": "sproutbabytracker",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -41,8 +41,8 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "Allow Baby Tracker to access your photos.",
-          "cameraPermission": "Allow Baby Tracker to access your camera."
+          "photosPermission": "Allow Sprout to access your photos.",
+          "cameraPermission": "Allow Sprout to access your camera."
         }
       ],
       "@react-native-community/datetimepicker"
