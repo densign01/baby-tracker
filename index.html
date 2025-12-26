@@ -94,20 +94,38 @@
             color: white;
         }
 
-        .hero h1 {
-            font-size: 48px;
+        .hero-logo {
+            font-size: 80px;
+            margin-bottom: 16px;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+        }
+
+        .hero-name {
+            font-size: 72px;
             font-weight: 800;
-            margin-bottom: 20px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 8px;
+            letter-spacing: -2px;
+            text-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-tagline {
+            font-size: 28px;
+            font-weight: 600;
+            opacity: 0.95;
+            margin-bottom: 8px !important;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            opacity: 0.8;
+            margin-bottom: 24px !important;
         }
 
         .hero p {
-            font-size: 20px;
+            font-size: 18px;
             opacity: 0.9;
             max-width: 600px;
-            margin: 0 auto 40px;
+            margin: 0 auto 32px;
         }
 
         .app-store-badge {
@@ -255,6 +273,19 @@
                 font-size: 32px;
             }
 
+            .hero-logo {
+                font-size: 56px;
+            }
+
+            .hero-name {
+                font-size: 48px;
+                letter-spacing: -1px;
+            }
+
+            .hero-tagline {
+                font-size: 22px;
+            }
+
             .hero p {
                 font-size: 16px;
             }
@@ -288,9 +319,11 @@
 
     <!-- Hero -->
     <section class="hero">
-        <h1>Track Your Baby's Day with Ease</h1>
-        <p>Simple, beautiful, and intuitive. Log sleep, feedings, and diaper changes in seconds. Perfect for busy
-            parents.</p>
+        <div class="hero-logo">🌱</div>
+        <h1 class="hero-name">Sprout</h1>
+        <p class="hero-tagline">Baby Tracker</p>
+        <p class="hero-subtitle">Newborn Sleep, Feeding & Diaper Tracker</p>
+        <p>Simple, beautiful, and intuitive. Log your baby's daily activities in seconds. Perfect for busy parents.</p>
         <a href="#" class="app-store-badge">📱 Coming Soon to App Store</a>
     </section>
 
