@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Baby Tracker - Simple and beautiful app to track your baby's sleep, feeding, and diaper changes.">
+    <title>Baby Tracker - Track Your Baby's Daily Activities</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7C6FEA;
+            --primary-dark: #5B4ED1;
+            --background: #F8F9FC;
+            --card: #FFFFFF;
+            --text: #1A1D26;
+            --text-secondary: #6B7280;
+            --text-muted: #9CA3AF;
+            --border: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 32px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 80px 24px 120px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .app-store-badge {
+            display: inline-block;
+            background: black;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .app-store-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Features */
+        .features {
+            max-width: 1200px;
+            margin: -60px auto 0;
+            padding: 0 24px 80px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* Section */
+        .section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .section-content {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .section-content h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 24px 0 12px;
+            color: var(--text);
+        }
+
+        .section-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .section-content p,
+        .section-content li {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .section-content ul {
+            padding-left: 24px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text);
+            color: white;
+            padding: 48px 24px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-copy {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-content {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="landing.html" class="logo">
+                <span class="logo-icon">👶</span>
+                <span class="logo-text">Baby Tracker</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="#support">Support</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Track Your Baby's Day with Ease</h1>
+        <p>Simple, beautiful, and intuitive. Log sleep, feedings, and diaper changes in seconds. Perfect for busy
+            parents.</p>
+        <a href="#" class="app-store-badge">📱 Coming Soon to App Store</a>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">😴</div>
+                <h3>Sleep Tracking</h3>
+                <p>Log sleep duration and see daily totals at a glance</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🍼</div>
+                <h3>Feeding Log</h3>
+                <p>Track breast, bottle, or solid feedings with details</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👶</div>
+                <h3>Diaper Changes</h3>
+                <p>Quick logging for wet and dirty diapers</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Daily Summary</h3>
+                <p>Beautiful overview of your baby's daily activities</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>History View</h3>
+                <p>Browse past days and track patterns over time</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">☁️</div>
+                <h3>Cloud Sync</h3>
+                <p>Your data is safely stored and synced across devices</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support -->
+    <section class="section" id="support">
+        <h2>Support</h2>
+        <div class="section-content">
+            <h3>Need Help?</h3>
+            <p>We're here to help! If you have any questions, issues, or feedback about Baby Tracker, please reach out
+                to us.</p>
+
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:support@babytracker.app">support@babytracker.app</a></p>
+
+            <h3>Frequently Asked Questions</h3>
+
+            <p><strong>Q: How do I create an account?</strong><br>
+                A: You can sign up using your email address or use "Sign in with Apple" for quick access.</p>
+
+            <p><strong>Q: Is my data backed up?</strong><br>
+                A: Yes! All your data is automatically synced to the cloud and backed up securely.</p>
+
+            <p><strong>Q: Can I share access with my partner?</strong><br>
+                A: Partner sharing is a premium feature coming soon!</p>
+
+            <p><strong>Q: How do I delete my account?</strong><br>
+                A: Go to Settings in the app and select "Delete Account". This will permanently delete all your data.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#features">Features</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="#support">Support</a>
+            </div>
+            <p class="footer-copy">© 2024 Baby Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
