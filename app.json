@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#7C6FEA"
+      "backgroundColor": "#FBF9F7"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,6 +20,7 @@
       "bundleIdentifier": "com.getsprout.babytracker",
       "buildNumber": "1",
       "usesAppleSignIn": true,
+      "privacyPolicyUrl": "https://growsprout.xyz/privacy",
       "infoPlist": {
         "NSCameraUsageDescription": "We need camera access to take photos of your baby.",
         "NSPhotoLibraryUsageDescription": "We need photo library access to select photos of your baby.",
@@ -29,7 +30,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#7C6FEA"
+        "backgroundColor": "#FBF9F7"
       },
       "package": "com.getsprout.babytracker",
       "permissions": [
@@ -54,6 +55,7 @@
     "experiments": {
       "typedRoutes": true
     },
+    "newArchEnabled": false,
     "extra": {
       "router": {},
       "eas": {

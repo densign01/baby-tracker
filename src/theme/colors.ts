@@ -1,33 +1,34 @@
 // ===== Color System =====
+// Swaddle Branding: Warm Neutrals (Softer Neutrals palette)
 
 export const palette = {
-    // Neutrals
+    // Core Neutrals
     white: '#FFFFFF',
     black: '#000000',
 
-    // Grays
-    gray50: '#F8F9FE',
-    gray100: '#F1F5F9',
-    gray200: '#E2E8F0',
-    gray300: '#CBD5E1',
-    gray400: '#94A3B8',
-    gray500: '#64748B',
-    gray600: '#475569',
-    gray700: '#334155',
-    gray800: '#1E293B',
-    gray900: '#0F172A',
+    // Warm Grays (cream-tinted)
+    gray50: '#FBF9F7',   // Light cream background
+    gray100: '#F5F2EF',  // Soft cream
+    gray200: '#E8E4E0',  // Light warm gray border
+    gray300: '#D4CFC9',  // Warm gray
+    gray400: '#A8A09A',  // Muted warm gray
+    gray500: '#7D7572',  // Warm gray text secondary
+    gray600: '#5C5653',  // Warm charcoal
+    gray700: '#4A4543',  // Dark warm charcoal
+    gray800: '#3A3634',  // Very dark warm
+    gray900: '#2A2726',  // Almost black warm
 
-    // Purple (Neutral theme)
-    purple50: '#F5F3FF',
-    purple100: '#EDE9FE',
-    purple200: '#DDD6FE',
-    purple300: '#C4B5FD',
-    purple400: '#A78BFA',
-    purple500: '#7C6FEA',
-    purple600: '#6D5DD3',
-    purple700: '#5D4ED6',
-    purple800: '#4C3DB8',
-    purple900: '#3B2F8A',
+    // Tan/Beige (Neutral theme - primary brand color)
+    tan50: '#FAF7F4',
+    tan100: '#F5EFE8',
+    tan200: '#E8DDD0',
+    tan300: '#D4C4B0',
+    tan400: '#C4A98B',   // Primary accent
+    tan500: '#B39574',   // Primary
+    tan600: '#9A7D5E',
+    tan700: '#7D6349',
+    tan800: '#5F4A36',
+    tan900: '#403224',
 
     // Blue (Boy theme)
     blue50: '#EFF6FF',
@@ -63,32 +64,33 @@ export const palette = {
 export type ColorScheme = 'neutral' | 'boy' | 'girl';
 
 const createThemeColors = (scheme: ColorScheme, isDark: boolean) => {
+    // Primary colors based on scheme
     const primary = scheme === 'boy' ? palette.blue500 :
         scheme === 'girl' ? palette.pink500 :
-            palette.purple500;
+            palette.tan500;
 
     const primaryLight = scheme === 'boy' ? palette.blue300 :
         scheme === 'girl' ? palette.pink300 :
-            palette.purple300;
+            palette.tan300;
 
     const primaryDark = scheme === 'boy' ? palette.blue700 :
         scheme === 'girl' ? palette.pink700 :
-            palette.purple700;
+            palette.tan700;
 
     if (isDark) {
         return {
             primary,
             primaryLight,
             primaryDark,
-            background: '#1A1A2E',
-            backgroundSecondary: '#16162A',
-            card: '#25253B',
-            cardBorder: '#35354B',
-            text: '#EAEAEA',
-            textSecondary: '#A0AEC0',
-            textMuted: '#718096',
-            border: '#35354B',
-            inputBackground: '#25253B',
+            background: '#1F1D1B',        // Warm dark background
+            backgroundSecondary: '#171615',
+            card: '#2A2725',              // Warm dark card
+            cardBorder: '#3D3936',
+            text: '#F5F2EF',
+            textSecondary: '#A8A09A',
+            textMuted: '#7D7572',
+            border: '#3D3936',
+            inputBackground: '#2A2725',
             overlay: 'rgba(0, 0, 0, 0.7)',
             success: palette.success,
             warning: palette.warning,
@@ -97,16 +99,17 @@ const createThemeColors = (scheme: ColorScheme, isDark: boolean) => {
         };
     }
 
+    // Light theme - Softer Neutrals
     return {
         primary,
         primaryLight,
         primaryDark,
-        background: palette.gray50,
+        background: palette.gray50,      // Light cream
         backgroundSecondary: palette.white,
-        card: palette.white,
-        cardBorder: palette.gray200,
-        text: palette.gray800,
-        textSecondary: palette.gray600,
+        card: palette.white,             // White cards
+        cardBorder: palette.gray200,     // Warm gray border
+        text: palette.gray700,           // Warm charcoal text
+        textSecondary: palette.gray500,  // Warm gray secondary
         textMuted: palette.gray400,
         border: palette.gray200,
         inputBackground: palette.white,
@@ -118,32 +121,32 @@ const createThemeColors = (scheme: ColorScheme, isDark: boolean) => {
     };
 };
 
-// Gradient definitions for activity cards
+// Gradient definitions for activity cards (warm neutral tones)
 export const gradients = {
     sleep: {
-        colors: ['#667eea', '#764ba2'] as const,
+        colors: ['#8B7B6B', '#6B5B4B'] as const,  // Warm taupe
         start: { x: 0, y: 0 },
         end: { x: 1, y: 1 },
     },
     feeding: {
-        colors: ['#f093fb', '#f5576c'] as const,
+        colors: ['#C4A98B', '#B39574'] as const,  // Soft tan
         start: { x: 0, y: 0 },
         end: { x: 1, y: 1 },
     },
     pee: {
-        colors: ['#4facfe', '#00f2fe'] as const,
+        colors: ['#7BA3C4', '#5B8AB0'] as const,  // Dusty blue
         start: { x: 0, y: 0 },
         end: { x: 1, y: 1 },
     },
     poop: {
-        colors: ['#fa709a', '#fee140'] as const,
+        colors: ['#A8957D', '#8B7D65'] as const,  // Warm brown
         start: { x: 0, y: 0 },
         end: { x: 1, y: 1 },
     },
     header: {
-        neutral: ['#667eea', '#764ba2'] as const,
-        boy: ['#4facfe', '#00f2fe'] as const,
-        girl: ['#f093fb', '#f5576c'] as const,
+        neutral: ['#C4A98B', '#A8957D'] as const,  // Warm tan
+        boy: ['#7BA3C4', '#5B8AB0'] as const,      // Dusty blue
+        girl: ['#C4A0A0', '#B08888'] as const,     // Dusty rose
     },
 };
 

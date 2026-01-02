@@ -36,7 +36,7 @@ export default function PremiumUpgradeModal({
         // onClose();
 
         // Show coming soon message
-        alert('In-App Purchases coming soon! This is a preview of premium features.');
+        alert('Premium features will be available in a future update.');
     };
 
     const handleRestore = async () => {

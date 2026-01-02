@@ -25,7 +25,7 @@ import { useSubscriptionStore } from '../../src/store/subscriptionStore';
 import PremiumUpgradeModal from '../modals/premium';
 
 export default function SettingsScreen() {
-    const { user, signOut } = useAuthStore();
+    const { user, signOut, deleteAccount, isLoading } = useAuthStore();
     const { selectedBaby, updateBaby } = useBabyStore();
     const { feedingPreferences, setFeedingPreferences } = useSettingsStore();
     const { isPremium, canShareWithPartner } = useSubscriptionStore();
@@ -81,6 +81,41 @@ export default function SettingsScreen() {
                     onPress: async () => {
                         await signOut();
                         router.replace('/(auth)/login');
+                    },
+                },
+            ]
+        );
+    };
+
+    const handleDeleteAccount = () => {
+        Alert.alert(
+            'Delete Account',
+            'Are you sure you want to permanently delete your account? This action cannot be undone and all your data will be lost.',
+            [
+                { text: 'Cancel', style: 'cancel' },
+                {
+                    text: 'Delete Account',
+                    style: 'destructive',
+                    onPress: () => {
+                        Alert.alert(
+                            'Confirm Deletion',
+                            'This is your final warning. Your account and all data will be permanently deleted.',
+                            [
+                                { text: 'Cancel', style: 'cancel' },
+                                {
+                                    text: 'Delete Forever',
+                                    style: 'destructive',
+                                    onPress: async () => {
+                                        try {
+                                            await deleteAccount();
+                                            router.replace('/(auth)/login');
+                                        } catch (error) {
+                                            Alert.alert('Error', 'Failed to delete account. Please try again.');
+                                        }
+                                    },
+                                },
+                            ]
+                        );
                     },
                 },
             ]
@@ -206,6 +241,16 @@ export default function SettingsScreen() {
 
                     <TouchableOpacity style={styles.signOutButton} onPress={handleSignOut}>
                         <Text style={styles.signOutText}>Sign Out</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={styles.deleteAccountButton}
+                        onPress={handleDeleteAccount}
+                        disabled={isLoading}
+                    >
+                        <Text style={styles.deleteAccountText}>
+                            {isLoading ? 'Deleting...' : 'Delete Account'}
+                        </Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
@@ -509,6 +554,19 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '600',
         color: colors.error,
+    },
+    deleteAccountButton: {
+        backgroundColor: colors.card,
+        padding: 16,
+        borderRadius: 12,
+        alignItems: 'center',
+        marginTop: 12,
+    },
+    deleteAccountText: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: colors.error,
+        opacity: 0.7,
     },
     modalOverlay: {
         flex: 1,

@@ -11,8 +11,9 @@ import {
     updateProfile,
     OAuthProvider,
     signInWithCredential,
+    deleteUser,
 } from 'firebase/auth';
-import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, setDoc, getDoc, deleteDoc, serverTimestamp } from 'firebase/firestore';
 import * as AppleAuthentication from 'expo-apple-authentication';
 import * as Crypto from 'expo-crypto';
 import { auth, db } from '../lib/firebase';
@@ -34,6 +35,7 @@ interface AuthState {
     resetPassword: (email: string) => Promise<void>;
     clearError: () => void;
     updateSubscriptionStatus: (status: SubscriptionStatus, expiry?: Date) => Promise<void>;
+    deleteAccount: () => Promise<void>;
 }
 
 export const useAuthStore = create<AuthState>((set, get) => ({
@@ -221,6 +223,28 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     },
 
     clearError: () => set({ error: null }),
+
+    deleteAccount: async () => {
+        const { firebaseUser } = get();
+        if (!firebaseUser) {
+            throw new Error('No user logged in');
+        }
+
+        set({ isLoading: true, error: null });
+        try {
+            // Delete user document from Firestore
+            await deleteDoc(doc(db, 'users', firebaseUser.uid));
+
+            // Delete Firebase Auth user
+            await deleteUser(firebaseUser);
+
+            // Clear local state
+            set({ user: null, firebaseUser: null, isLoading: false });
+        } catch (error: any) {
+            set({ error: 'Failed to delete account. Please try again.', isLoading: false });
+            throw error;
+        }
+    },
 
     updateSubscriptionStatus: async (status, expiry) => {
         const { user, firebaseUser } = get();
