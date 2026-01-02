@@ -306,8 +306,9 @@ const styles = StyleSheet.create({
     },
     date: {
         fontSize: 14,
-        color: colors.textSecondary,
+        color: colors.textMuted,
         marginBottom: 4,
+        fontWeight: '500',
     },
     babyName: {
         fontSize: 28,
@@ -325,11 +326,8 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         padding: 20,
         alignItems: 'center',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.05,
-        shadowRadius: 8,
-        elevation: 2,
+        borderWidth: 1,
+        borderColor: colors.cardBorder,
     },
     diaperCard: {
         marginBottom: 12,
@@ -340,7 +338,7 @@ const styles = StyleSheet.create({
     },
     cardTitle: {
         fontSize: 16,
-        fontWeight: '700',
+        fontWeight: '600',
         color: colors.text,
         marginBottom: 4,
     },
@@ -350,7 +348,7 @@ const styles = StyleSheet.create({
     },
     sectionTitle: {
         fontSize: 18,
-        fontWeight: '700',
+        fontWeight: '600',
         color: colors.text,
         marginTop: 16,
         marginBottom: 12,
@@ -360,6 +358,8 @@ const styles = StyleSheet.create({
         backgroundColor: colors.card,
         borderRadius: 16,
         padding: 20,
+        borderWidth: 1,
+        borderColor: colors.cardBorder,
     },
     summaryItem: {
         flex: 1,
@@ -386,7 +386,7 @@ const styles = StyleSheet.create({
     },
     modalOverlay: {
         flex: 1,
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 24,
@@ -408,7 +408,7 @@ const styles = StyleSheet.create({
     },
     modalTitle: {
         fontSize: 20,
-        fontWeight: '700',
+        fontWeight: '600',
         color: colors.text,
         marginBottom: 4,
     },
@@ -428,8 +428,10 @@ const styles = StyleSheet.create({
     durationTextInput: {
         width: 80,
         height: 60,
-        backgroundColor: colors.background,
+        backgroundColor: colors.backgroundSecondary,
         borderRadius: 12,
+        borderWidth: 1,
+        borderColor: colors.border,
         fontSize: 28,
         fontWeight: '700',
         textAlign: 'center',
@@ -450,7 +452,7 @@ const styles = StyleSheet.create({
     logButtonText: {
         color: '#FFFFFF',
         fontSize: 16,
-        fontWeight: '700',
+        fontWeight: '600',
     },
     diaperOptions: {
         flexDirection: 'row',
@@ -460,8 +462,10 @@ const styles = StyleSheet.create({
     diaperOption: {
         alignItems: 'center',
         padding: 16,
-        backgroundColor: colors.background,
+        backgroundColor: colors.backgroundSecondary,
         borderRadius: 12,
+        borderWidth: 1,
+        borderColor: colors.border,
         minWidth: 80,
     },
     diaperOptionIcon: {

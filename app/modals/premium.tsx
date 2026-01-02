@@ -58,8 +58,8 @@ export default function PremiumUpgradeModal({
                     <ScrollView showsVerticalScrollIndicator={false}>
                         {/* Header */}
                         <View style={styles.header}>
-                            <Text style={styles.headerIcon}>🌱</Text>
-                            <Text style={styles.headerTitle}>Sprout Premium</Text>
+                            <Text style={styles.headerIcon}>😴</Text>
+                            <Text style={styles.headerTitle}>Swaddle Premium</Text>
                             <Text style={styles.headerSubtitle}>
                                 Unlock all features for the complete experience
                             </Text>

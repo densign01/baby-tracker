@@ -65,8 +65,8 @@ export default function LoginScreen() {
                 >
                     {/* Header */}
                     <View style={styles.header}>
-                        <Text style={styles.logo}>🌱</Text>
-                        <Text style={styles.title}>Sprout</Text>
+                        <Text style={styles.logo}>😴</Text>
+                        <Text style={styles.title}>Swaddle</Text>
                         <Text style={styles.subtitle}>Welcome back!</Text>
                     </View>
 
