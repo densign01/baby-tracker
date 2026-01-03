@@ -124,53 +124,57 @@ export default function HomeScreen() {
                     <Text style={styles.babyName}>{babyName}'s Day</Text>
                 </View>
 
-                {/* Action Cards */}
-                <View style={styles.cardsRow}>
-                    {/* Sleep Card */}
-                    <TouchableOpacity style={styles.card} onPress={handleSleepPress}>
-                        <Text style={styles.cardIcon}>😴</Text>
-                        <Text style={styles.cardTitle}>Sleep</Text>
-                        <Text style={styles.cardSubtitle}>Log a nap</Text>
-                    </TouchableOpacity>
+                {/* Quick Log Section */}
+                <View style={styles.section}>
+                    <Text style={styles.sectionTitle}>Quick Log</Text>
+                    <View style={styles.cardsRow}>
+                        {/* Sleep Card */}
+                        <TouchableOpacity style={styles.actionCard} onPress={handleSleepPress}>
+                            <View style={styles.actionIconContainer}>
+                                <Text style={styles.actionIcon}>😴</Text>
+                            </View>
+                            <Text style={styles.actionTitle}>Sleep</Text>
+                        </TouchableOpacity>
 
-                    {/* Feeding Card */}
-                    <TouchableOpacity style={styles.card} onPress={handleFeedingPress}>
-                        <Text style={styles.cardIcon}>🍼</Text>
-                        <Text style={styles.cardTitle}>Feeding</Text>
-                        <Text style={styles.cardSubtitle}>Log a feeding</Text>
-                    </TouchableOpacity>
+                        {/* Feeding Card */}
+                        <TouchableOpacity style={styles.actionCard} onPress={handleFeedingPress}>
+                            <View style={styles.actionIconContainer}>
+                                <Text style={styles.actionIcon}>🍼</Text>
+                            </View>
+                            <Text style={styles.actionTitle}>Feeding</Text>
+                        </TouchableOpacity>
+
+                        {/* Diaper Card */}
+                        <TouchableOpacity style={styles.actionCard} onPress={handleDiaperPress}>
+                            <View style={styles.actionIconContainer}>
+                                <Text style={styles.actionIcon}>👶</Text>
+                            </View>
+                            <Text style={styles.actionTitle}>Diaper</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
-                {/* Diaper Card - Full Width */}
-                <TouchableOpacity
-                    style={[styles.card, styles.diaperCard]}
-                    onPress={handleDiaperPress}
-                >
-                    <Text style={styles.cardIcon}>👶</Text>
-                    <Text style={styles.cardTitle}>Diaper</Text>
-                    <Text style={styles.cardSubtitle}>Log a diaper change</Text>
-                </TouchableOpacity>
-
-                {/* Today's Summary */}
-                <Text style={styles.sectionTitle}>Today's Summary</Text>
-                <View style={styles.summaryContainer}>
-                    <View style={styles.summaryItem}>
-                        <Text style={styles.summaryIcon}>😴</Text>
-                        <Text style={styles.summaryValue}>{formatSleepTime(dailySummary.totalSleepMs)}</Text>
-                        <Text style={styles.summaryLabel}>Sleep</Text>
-                    </View>
-                    <View style={styles.summaryItem}>
-                        <Text style={styles.summaryIcon}>🍼</Text>
-                        <Text style={styles.summaryValue}>{dailySummary.feedingCount}</Text>
-                        <Text style={styles.summaryLabel}>Feedings</Text>
-                    </View>
-                    <View style={styles.summaryItem}>
-                        <Text style={styles.summaryIcon}>👶</Text>
-                        <Text style={styles.summaryValue}>{dailySummary.diaperCount}</Text>
-                        <Text style={styles.summaryLabel}>Diapers</Text>
-                        <Text style={styles.summaryBreakdown}>
-                            💧{dailySummary.wetDiaperCount} 💩{dailySummary.dirtyDiaperCount}
-                        </Text>
+                {/* Today's Summary Section */}
+                <View style={styles.section}>
+                    <Text style={styles.sectionTitle}>Today's Summary</Text>
+                    <View style={styles.summaryContainer}>
+                        <View style={styles.summaryItem}>
+                            <Text style={styles.summaryValue}>{formatSleepTime(dailySummary.totalSleepMs)}</Text>
+                            <Text style={styles.summaryLabel}>Sleep</Text>
+                        </View>
+                        <View style={styles.summaryDivider} />
+                        <View style={styles.summaryItem}>
+                            <Text style={styles.summaryValue}>{dailySummary.feedingCount}</Text>
+                            <Text style={styles.summaryLabel}>Feedings</Text>
+                        </View>
+                        <View style={styles.summaryDivider} />
+                        <View style={styles.summaryItem}>
+                            <Text style={styles.summaryValue}>{dailySummary.diaperCount}</Text>
+                            <Text style={styles.summaryLabel}>Diapers</Text>
+                            <Text style={styles.summaryBreakdown}>
+                                💧{dailySummary.wetDiaperCount}  💩{dailySummary.dirtyDiaperCount}
+                            </Text>
+                        </View>
                     </View>
                 </View>
             </ScrollView>
@@ -318,8 +322,47 @@ const styles = StyleSheet.create({
     cardsRow: {
         flexDirection: 'row',
         gap: 12,
+    },
+    section: {
+        marginBottom: 24,
+    },
+    sectionTitle: {
+        fontSize: 13,
+        fontWeight: '600',
+        color: colors.textMuted,
+        textTransform: 'uppercase',
+        letterSpacing: 0.5,
         marginBottom: 12,
     },
+    // Action Cards (Quick Log)
+    actionCard: {
+        flex: 1,
+        backgroundColor: colors.card,
+        borderRadius: 16,
+        paddingVertical: 20,
+        paddingHorizontal: 12,
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: colors.cardBorder,
+    },
+    actionIconContainer: {
+        width: 56,
+        height: 56,
+        borderRadius: 28,
+        backgroundColor: colors.backgroundSecondary,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+    actionIcon: {
+        fontSize: 28,
+    },
+    actionTitle: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: colors.text,
+    },
+    // Legacy card styles (keep for modals)
     card: {
         flex: 1,
         backgroundColor: colors.card,
@@ -346,37 +389,32 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: colors.textMuted,
     },
-    sectionTitle: {
-        fontSize: 18,
-        fontWeight: '600',
-        color: colors.text,
-        marginTop: 16,
-        marginBottom: 12,
-    },
+    // Summary Section
     summaryContainer: {
         flexDirection: 'row',
-        backgroundColor: colors.card,
+        backgroundColor: colors.backgroundSecondary,
         borderRadius: 16,
-        padding: 20,
-        borderWidth: 1,
-        borderColor: colors.cardBorder,
+        paddingVertical: 20,
+        paddingHorizontal: 8,
     },
     summaryItem: {
         flex: 1,
         alignItems: 'center',
     },
-    summaryIcon: {
-        fontSize: 24,
-        marginBottom: 8,
+    summaryDivider: {
+        width: 1,
+        backgroundColor: colors.border,
+        marginVertical: 4,
     },
     summaryValue: {
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: '700',
         color: colors.text,
-        marginBottom: 4,
+        marginBottom: 2,
     },
     summaryLabel: {
         fontSize: 12,
+        fontWeight: '500',
         color: colors.textMuted,
     },
     summaryBreakdown: {
