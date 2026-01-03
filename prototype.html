@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simple and beautiful baby activity tracker for sleep, feeding, and diaper changes">
+    <title>Baby Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">👶</span>
+                    <h1>Baby Tracker</h1>
+                </div>
+                <div class="current-time" id="currentTime"></div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Quick Action Cards -->
+            <section class="quick-actions">
+                <h2 class="section-title">Log Activity</h2>
+                <div class="action-cards">
+                    <!-- Sleep Card -->
+                    <div class="action-card sleep-card" id="sleepCard">
+                        <div class="card-icon">🌙</div>
+                        <div class="card-content">
+                            <h3>Sleep</h3>
+                            <p class="card-status" id="sleepStatus">Tap to start</p>
+                        </div>
+                        <div class="card-timer" id="sleepTimer"></div>
+                    </div>
+
+                    <!-- Feeding Card -->
+                    <div class="action-card feeding-card" id="feedingCard">
+                        <div class="card-icon">🍼</div>
+                        <div class="card-content">
+                            <h3>Feeding</h3>
+                            <p class="card-status" id="feedingStatus">Tap to log</p>
+                        </div>
+                    </div>
+
+                    <!-- Diaper Cards -->
+                    <div class="action-card pee-card" id="peeCard">
+                        <div class="card-icon">💧</div>
+                        <div class="card-content">
+                            <h3>Wet Diaper</h3>
+                            <p class="card-status" id="peeStatus">Tap to log</p>
+                        </div>
+                    </div>
+
+                    <div class="action-card poop-card" id="poopCard">
+                        <div class="card-icon">💩</div>
+                        <div class="card-content">
+                            <h3>Dirty Diaper</h3>
+                            <p class="card-status" id="poopStatus">Tap to log</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Today's Summary -->
+            <section class="summary-section">
+                <h2 class="section-title">Today's Summary</h2>
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="summary-icon">🌙</div>
+                        <div class="summary-value" id="totalSleep">0h 0m</div>
+                        <div class="summary-label">Total Sleep</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon">🍼</div>
+                        <div class="summary-value" id="totalFeedings">0</div>
+                        <div class="summary-label">Feedings</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon">👶</div>
+                        <div class="summary-value" id="totalDiapers">0</div>
+                        <div class="summary-label">Diapers</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Activity Log -->
+            <section class="activity-section">
+                <div class="activity-header">
+                    <h2 class="section-title">Activity Log</h2>
+                    <button class="clear-btn" id="clearBtn">Clear All</button>
+                </div>
+                <div class="activity-list" id="activityList">
+                    <div class="empty-state" id="emptyState">
+                        <div class="empty-icon">📋</div>
+                        <p>No activities logged yet today</p>
+                        <span>Tap the cards above to start tracking</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Feeding Modal -->
+        <div class="modal-overlay" id="feedingModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>🍼 Log Feeding</h3>
+                    <button class="modal-close" id="closeFeedingModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="feeding-types">
+                        <button class="feeding-type-btn active" data-type="breast">
+                            <span class="type-icon">🤱</span>
+                            <span>Breast</span>
+                        </button>
+                        <button class="feeding-type-btn" data-type="bottle">
+                            <span class="type-icon">🍼</span>
+                            <span>Bottle</span>
+                        </button>
+                        <button class="feeding-type-btn" data-type="solid">
+                            <span class="type-icon">🥣</span>
+                            <span>Solid</span>
+                        </button>
+                    </div>
+                    <div class="feeding-details" id="feedingDetails">
+                        <!-- Breast feeding options -->
+                        <div class="breast-options" id="breastOptions">
+                            <p class="detail-label">Which side?</p>
+                            <div class="side-buttons">
+                                <button class="side-btn active" data-side="left">Left</button>
+                                <button class="side-btn" data-side="right">Right</button>
+                                <button class="side-btn" data-side="both">Both</button>
+                            </div>
+                        </div>
+                        <!-- Bottle options -->
+                        <div class="bottle-options hidden" id="bottleOptions">
+                            <p class="detail-label">Amount (oz)</p>
+                            <div class="amount-input">
+                                <button class="amount-btn minus">−</button>
+                                <input type="number" id="bottleAmount" value="4" min="0" max="12" step="0.5">
+                                <button class="amount-btn plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notes-section">
+                        <label class="detail-label" for="feedingNotes">Notes (optional)</label>
+                        <textarea id="feedingNotes" placeholder="Add any notes..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="cancelFeeding">Cancel</button>
+                    <button class="btn btn-primary" id="saveFeeding">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div class="toast" id="toast">
+            <span class="toast-icon"></span>
+            <span class="toast-message"></span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
