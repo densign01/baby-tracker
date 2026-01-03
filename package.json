@@ -37,6 +37,7 @@
   "devDependencies": {
     "@react-native-community/cli": "^20.0.2",
     "@types/react": "~19.1.0",
+    "react-native-dotenv": "^3.4.11",
     "typescript": "~5.9.2"
   },
   "private": true
