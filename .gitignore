@@ -14,7 +14,7 @@ web-build/
 .env.local
 .env.production
 *.plist
-mobile/src/lib/firebase.ts
+src/lib/firebase.ts
 
 # Debug logs
 npm-debug.log*
